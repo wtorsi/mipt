@@ -1,0 +1,133 @@
+.upload-tables-block{
+
+}
+
+.vertical-form .btn{
+	display: block;
+}
+
+.login-form {
+	margin-top: 100px;
+	width: 260px;
+	display: inline-block;
+	left: 50%;
+	position: absolute;
+	margin-left: -130px;
+}
+
+
+.upload-tables{
+
+}
+.upload-tables-table{
+	overflow-x: scroll;
+
+}
+.upload-tables-row{
+	display: none;
+}
+.fileinput-button{
+}
+#fileupload{
+
+}
+.fileupload-block{
+	height: 110px;
+}
+#fileupload-error-block {
+	margin-top: 20px;
+	min-height: 500px;
+}
+.upload-tables-row-flag{
+	display: none;
+}
+
+.tests{
+	margin-top: 100px;
+}
+
+.create-branch-block{
+	/*display:none;*/
+}
+
+create-branch-body{
+	/*display: none;*/
+}
+
+#fu-info {
+
+	margin: 15px 0;
+}
+
+#fu-info p{
+	margin: 0 0 4px;
+}
+.fu-button input {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	transform: translate(-300px, 0) scale(4);
+	font-size: 23px;
+	direction: ltr;
+	cursor: pointer;
+}
+
+
+.create-branch #result-block {
+	height: 295px;
+	width: 100%;
+	background: #FFF;
+	overflow: scroll;
+	border: 1px solid lightgray;
+	border-radius: 7px;
+}
+
+.create-branch textarea{
+	resize: none;
+}
+
+.test-answer #result-block{
+	height: 400px;
+	width: 100%;
+	background: #F3F3F3;
+	overflow: scroll;
+	border: 1px solid lightgray;
+	border-radius: 7px;
+}
+.test-answer textarea{
+	resize: none;
+}
+.test-answer .CodeMirror{
+	height: 190px;
+}
+.test-answer .question{
+	word-wrap: break-word;
+}
+.test-answer .tables p{
+	margin-bottom: 5px;
+}
+
+#result-block .errors{
+	color: #D00;
+}
+
+.help-block.error {
+	font-size: 11px;
+	color: darkred;
+}
+
+
+#command-result {
+	min-height: 30px;
+	max-height: 400px;
+	background: #FCFCFC;
+	border: 1px solid #E4E4E4;
+	border-radius: 8px;
+	overflow: scroll;
+}
+#command-result .alert{
+	margin: 0;
+}
