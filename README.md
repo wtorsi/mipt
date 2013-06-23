@@ -1,0 +1,4 @@
+mipt
+====
+
+MIPT. Test SQL
