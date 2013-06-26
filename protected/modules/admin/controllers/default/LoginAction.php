@@ -15,11 +15,11 @@ class LoginAction extends CAction
 		$model = new LoginForm;
 		if ($pdata = Request::post('LoginForm')) {
 			$model->attributes = $pdata;
-			if ($model->validate() && $model->login()) {
+			if ($model->validate() and $model->login()) {
 				Request::redirect(Yii::app()->user->returnUrl);
 			}
 
 		}
-		View::set('login/login', array('model' => $model));
+		View::set('login', array('model' => $model));
 	}
 }

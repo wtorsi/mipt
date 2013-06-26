@@ -121,13 +121,23 @@ create-branch-body{
 
 
 #command-result {
-	min-height: 30px;
-	max-height: 400px;
-	background: #FCFCFC;
-	border: 1px solid #E4E4E4;
-	border-radius: 8px;
-	overflow: scroll;
+	/*min-height: 30px;*/
+	/*max-height: 400px;*/
+	/*background: #FCFCFC;*/
+	/*border: 1px solid #E4E4E4;*/
+	/*border-radius: 8px;*/
+
 }
+
+#command-result .result{
+	max-width: 100%;
+	overflow-x: scroll;
+}
+
 #command-result .alert{
 	margin: 0;
+}
+
+.img-polaroid{
+	margin: 10px 10px 10px 0px;
 }

@@ -9,6 +9,8 @@
 /**
  * @var $question Question
  * @var $salt string
+ * @var $test_id int
+ * @var $result_id int
  */
 ?>
 
@@ -24,56 +26,56 @@
 						<h1><?=$question->branch->name?></h1>
 						<blockquote>
 							<p>
-								Редактируйте разделы<br/>
-								Создавайте и удаляйте <br/>
+								Для ответа на вопрос введите команду SQL в поле <b>Ответ</b> <br/>
+								Для проверки команды используйте кнопку <b>Проверить</b>, результат отобразится ниже <br/>
+								Для ответа и перехода к следующему вопросу, используйте кнопку <b>Ответить</b> <br/>
+								<br/>
+								Доступные таблицы отображены слева. <br/>
+								Для просмотра информации об интересующей Вас таблицы, кликните по ее названию
 							</p>
 						</blockquote>
-
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
 
 
 							<div class="row-fluid body">
-								<div class="span4">
+								<div class="span12">
 
-									<form method="post" id="question-form"
-									      action="<?=Yii::app()->createUrl('')?>">
-										<label for='inputQuestion'><?=CHtml::encode($question->getAttributeLabel('question'))?></label>
-										<div class="span12 well">
+									<form method="post" id="answer-form"
+									      action="<?=Yii::app()->createUrl('/test/save')?>">
+										<div class="alert alert-info alert-block">
+											<h4><?=CHtml::encode($question->getAttributeLabel('question'))?></h4>
 											<?=$question->question?>
 										</div>
-										<label for='inputAnswer'><?=CHtml::encode($question->getAttributeLabel('answer'))?> </label>
-										<textarea class="span12" rows="6" name="Question[answer]" id="inputAnswer"></textarea>
+										<h4><?=CHtml::encode($question->getAttributeLabel('answer'))?> </h4>
+										<textarea rows="6" name="Answer[answer]" id="inputAnswer"></textarea>
+										<input type="hidden" name="Answer[salt]" value="<?=$salt?>">
+										<input type="hidden" name="Answer[question_id]" value="<?=$question->id?>">
+										<input type="hidden" name="Answer[result_id]" value="<?=$result_id?>">
+										<input type="hidden" name="Answer[test_id]" value="<?=$test_id?>">
 									</form>
 
-								</div>
-								<div class="span8">
-									<h4>Результат команды</h4>
-									<div id="command-result">
-
-									</div>
 								</div>
 							</div>
 							<div class="footer row-fluid">
 								<div class="span12">
-									<button class="btn btn-success" type="submit" form="question-form">
+									<button class="btn btn-success" type="submit" form="answer-form">
 										Ответить
 									</button>
-									<?=CHtml::ajaxButton('Проверить',
-										Yii::app()->createUrl('/test/check'),
-										array(
-											'type'      => 'post',
-											'dataType'  => 'html',
-											'data'      => 'js:getCommandData()',
-											'success'   => 'js:setCommandResult',
-										),
-										array('class' => 'btn btn-info'))
-									?>
+									<button class="btn btn-info" onclick="return checkCommand(this)"
+										data-attr-url="<?=Yii::app()->createUrl('/test/check')?>">
+										Проверить
+									</button>
+
 
 								</div>
 							</div>
+							<div class="row-fluid">
+								<div class="span12" id="command-result">
 
+								</div>
+							</div>
 						</div>
 					</div>
 

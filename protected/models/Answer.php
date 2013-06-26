@@ -16,6 +16,9 @@
  */
 class Answer extends CActiveRecord
 {
+
+	public $salt;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -44,10 +47,19 @@ class Answer extends CActiveRecord
 		return array(
 			array('question_id, is_right, result_id', 'numerical', 'integerOnly'=>true),
 			array('answer', 'length', 'max'=>400),
+
+			array('salt', 'salt',),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, question_id, answer, is_right, result_id', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function salt($attribute, $params){
+		$salt     = MiscUtils::salt(User::get()->id . $this->result->test_id . $this->result_id . $this->question_id);
+		if($this->$attribute != $salt){
+			$this->addError($attribute, 'Хэш не совпадает');
+		};
 	}
 
 	/**
@@ -74,6 +86,7 @@ class Answer extends CActiveRecord
 			'answer' => 'Answer',
 			'is_right' => 'Is Right',
 			'result_id' => 'Result',
+
 		);
 	}
 
@@ -97,5 +110,31 @@ class Answer extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+	protected function beforeSave(){
+
+		$is_right = false;
+
+		try{
+			/**
+			 * @var $test_db DbConnection
+			 */
+			$test_db = Yii::app()->test_db;
+			$stable_answer =   $this->question->answer;
+			$test_answer = $this->answer;
+
+			$test_cnt =  $test_db->createCommand("SELECT count(*) FROM (" . $test_answer . ") test_ans")->queryScalar();
+			$stable_cnt = $test_db->createCommand("SELECT count(*) FROM (" . $stable_answer . ") stable_ans ")->queryScalar();
+
+			$union_query = "SELECT count(*) FROM ( (" . $test_answer . ")  UNION (" . $stable_answer . ")  ) as union_table ";
+			$union_cnt = $test_db->createCommand($union_query)->queryScalar();
+
+			$is_right = ($test_cnt == $stable_cnt and $union_cnt == $stable_cnt);
+		}
+		catch(CDbException $e){}
+		$this->is_right = $is_right;
+
+		return true;
 	}
 }

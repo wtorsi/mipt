@@ -15,7 +15,6 @@ class TestController extends AdminController {
 			'create'    =>  'admin.controllers.test.CreateAction',
 			'update'    =>  'admin.controllers.test.UpdateAction',
 			'delete'    =>  'admin.controllers.test.DeleteAction',
-
 		);
 	}
 }

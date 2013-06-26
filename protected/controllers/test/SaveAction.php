@@ -10,6 +10,13 @@
 class SaveAction extends Action {
 
 	public function run(){
-
+		if($pdata = Request::post('Answer')){
+			$model = new Answer();
+			$model->setAttributes($pdata);
+			if($model->validate() and $model->save(false)){
+				Request::goBack();
+			}
+		}
+		Request::redirect('/');
 	}
 }

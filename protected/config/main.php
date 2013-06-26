@@ -107,7 +107,7 @@ return array(
 		'test_db'      => array(
 			'connectionString' => 'mysql:host=localhost;dbname=mipt_test',
 			'emulatePrepare'   => true,
-			'username'         => 'root',
+			'username'         => 'mipt_test',
 			'password'         => 'toor',
 			'charset'          => 'utf8',
 			'class'            => 'DbConnection',
@@ -115,7 +115,7 @@ return array(
 		'stable_db'    => array(
 			'connectionString' => 'mysql:host=localhost;dbname=mipt_stable',
 			'emulatePrepare'   => true,
-			'username'         => 'root',
+			'username'         => 'mipt_stable',
 			'password'         => 'toor',
 			'charset'          => 'utf8',
 			'class'            => 'DbConnection',
@@ -137,9 +137,9 @@ return array(
 			),
 		),
 
-		'assetManager' => array(
-			'forceCopy' => true,
-		),
+//		'assetManager' => array(
+//			'forceCopy' => true,
+//		),
 
 		'clientScript' => array(
 			'class'              => 'CClientScript',

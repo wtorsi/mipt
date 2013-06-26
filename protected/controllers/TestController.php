@@ -14,6 +14,7 @@ class TestController extends Controller{
 			'check' => 'application.controllers.test.CheckAction',
 			'save'  => 'application.controllers.test.SaveAction',
 			'do'    => 'application.controllers.test.DoAction',
+			'result'    => 'application.controllers.test.ResultAction',
 		);
 	}
 

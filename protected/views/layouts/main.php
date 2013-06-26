@@ -14,7 +14,7 @@
 
 			<div class="container">
 
-				<?=CHtml::link('MIPT SQL Benchmark', array('/'), array('class' => 'brand'))?>
+				<?=CHtml::link('MIPT SQL Benchmark', array('/index'), array('class' => 'brand'))?>
 				<div class="pull-right">
 					<?
 					if(!Yii::app()->user->isGuest){

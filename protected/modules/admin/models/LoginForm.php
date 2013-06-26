@@ -10,6 +10,7 @@ class LoginForm extends CFormModel
 	public $username;
 	public $password;
 
+	public $verifyCode;
 	private $_identity;
 
 
@@ -18,6 +19,9 @@ class LoginForm extends CFormModel
 		return array(
 			array('username, password', 'required'),
 			array('password', 'authenticate'),
+			array('verifyCode', 'captcha',
+				'message' => 'Символы введены не верно'
+			),
 		);
 	}
 
@@ -25,7 +29,8 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			'username'  => 'Login',
-			'password'  => 'Пароль'
+			'password'  => 'Пароль',
+			'verifyCode' => 'Код изображения',
 		);
 	}
 

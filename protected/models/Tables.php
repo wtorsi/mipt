@@ -10,7 +10,9 @@
 class Tables {
 
 	public static function getHtml(){
+//		$test_db = Yii::app()->test_db;
 		$tables = Yii::app()->test_db->getSchema()->getTables();
+//		die();
 		return  View::parse('application.views.components.tables', array('tables' => $tables));
 	}
 }

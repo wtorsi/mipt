@@ -33,7 +33,7 @@ class AdminModule extends CWebModule
 	public static function rules() {
 		return array(
 			'admin'                                        => 'admin/default/index',
-			'admin/<action:(login|logout)>'                => 'admin/default/<action>',
+			'admin/<action:(login|logout|captcha)>'        => 'admin/default/<action>',
 			'admin/<controller:\w+>'                       => 'admin/<controller>/index',
 			'admin/<action:\w+>'                           => 'admin/default/<action>',
 			'admin/<controller:\w+>/<action:\w+>/<id:\d+>' => 'admin/<controller>/<action>',

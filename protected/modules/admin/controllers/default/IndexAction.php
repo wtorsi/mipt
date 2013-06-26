@@ -10,7 +10,7 @@
 class IndexAction extends CAction{
 
 	public function run(){
-		View::set('index/index');
+		View::set('index');
 	}
 
 }

@@ -130,7 +130,7 @@ class Result extends CActiveRecord
 				)
 			)
 		);
-		$criteria->addNotInCondition('id', $question_asked_ids);
+		$criteria->addNotInCondition('t.id', $question_asked_ids);
 		$criteria->order = 'RAND()';
 
 		return Question::model()->find($criteria);

@@ -127,19 +127,13 @@ class AdminSQL {
 		$test_db = Yii::app()->test_db;
 		$db = Yii::app()->db;
 
-		$query = "
-		SET @tables = NULL;
-			SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
-            FROM information_schema.tables
-            WHERE table_schema = '" . $test_db->dbName . "';
-
-			SET @tables = CONCAT('DROP TABLE ', @tables);
-			PREPARE stmt FROM @tables;
-			EXECUTE stmt;
-			DEALLOCATE PREPARE stmt;";
 
 
-		$db->createCommand($query)->execute();
+		$tables = $test_db->getSchema()->tableNames;
+		foreach($tables as $table_name){
+			$query = "DROP TABLE " . $test_db->dbName . "." . $table_name;
+			$db->createCommand($query)->execute();
+		}
 
 		$tables = $stable_db->getSchema()->tableNames;
 

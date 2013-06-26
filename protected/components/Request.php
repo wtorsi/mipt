@@ -22,6 +22,7 @@ class Request extends CApplicationComponent {
 	}
 
 	public static function redirect($url, $status = 302, $terminate = true){
+
 		if(is_array($url))
 		{
 			$route = isset($url[0]) ? $url[0] : '';
@@ -31,6 +32,7 @@ class Request extends CApplicationComponent {
 	}
 
 	public static function goBack(){
+
 		if($ref = self::get()->getUrlReferrer())
 			self::redirect($ref);
 	}

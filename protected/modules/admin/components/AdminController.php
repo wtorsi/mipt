@@ -21,7 +21,7 @@ class AdminController extends CController{
 		return array(
 			array(
 				'deny',
-				'actions' => array('login'),
+				'actions' => array('login', 'captcha'),
 				'users' => array('@'),
 				'deniedCallback' => array($this, 'redirectToHome')
 			),
@@ -31,17 +31,14 @@ class AdminController extends CController{
 			),
 			array(
 				'allow',
-				'actions' => array('login'),
+				'actions' => array('login', 'captcha'),
 				'users' => array('?'),
 			),
 			array('deny'),
-
 		);
 	}
 
-
-
-	public function redirectToHome($user){
+	public function redirectToHome(){
 		$this->redirect(Yii::app()->createUrl('admin'),true);
 	}
 

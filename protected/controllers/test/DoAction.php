@@ -13,7 +13,7 @@ class DoAction extends Action
 
 	public function run($test_id, $result_id = null) {
 
-		Script::get()->registerPackage('code');
+
 
 		//checks that test is exist and curent user has this test
 		if (!User::get()->hasTest($test_id)) {
@@ -28,14 +28,16 @@ class DoAction extends Action
 			$result->user_id = User::get()->id;
 			$result->save(false);
 
-			Request::redirect(array('test/do', 'test_id' => $test_id, 'result_id' => $result->primaryKey));
+			Request::redirect(array('/test/do', 'test_id' => $test_id, 'result_id' => $result->primaryKey));
 		}
 
 
 		$result = Result::model()->findByPk($result_id);
 		if ($result->isCompleted()) {
-			Request::redirect(array('test/result', 'result_id' => $result->id));
+			Request::redirect(array('/test/result', 'result_id' => $result->id));
 		}
+
+		Script::get()->registerPackage('code');
 
 		$question = $result->getRandomQuestion();
 		$salt     = MiscUtils::salt(User::get()->id . $test_id . $result_id . $question->id);
@@ -43,8 +45,9 @@ class DoAction extends Action
 		$data = array(
 			'question' => $question,
 			'salt'     => $salt,
+			'test_id'   => $test_id,
+			'result_id' => $result_id,
 		);
-
 		View::set('do', $data);
 	}
 
