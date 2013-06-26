@@ -26,10 +26,6 @@ return array(
 	'modules'           => array(
 
 
-		'gii'   => array(
-			'class'    => 'system.gii.GiiModule',
-			'password' => false,
-		),
 		'admin' => array(
 			'user'              => array(
 				//pair login-password
@@ -81,14 +77,9 @@ return array(
 			'caseSensitive'  => false,
 			'urlSuffix'      => '',
 			'rules'          => array(
-				'gii'                                                         => 'gii',
-				'gii/<controller:\w+>'                                        => 'gii/<controller>',
-				'gii/<controller:\w+>/<action:\w+>'                           => 'gii/<controller>/<action>',
+
 
 				"<controller:\w+>/<action:\w+>"                               => '<controller>/<action>',
-//				"<controller:\w+>/<action:\w+>/<test_id:\d+>"                 => '<controller>/<action>',
-//				"<controller:\w+>/<action:\w+>/<test_id:\d+>/<result_id:\d+>" => '<controller>/<action>',
-
 				'<action:\w+>'                                                => 'user/<action>',
 				'<action:\w+>/<id:\d+>'                                       => 'user/<action>',
 			),
@@ -98,8 +89,8 @@ return array(
 		'db'           => array(
 			'connectionString' => 'mysql:host=localhost;dbname=mipt',
 			'emulatePrepare'   => true,
-			'username'         => 'root',
-			'password'         => 'toor',
+			'username'         => 'mipt',
+			'password'         => 'uiY452utqNMM',
 			'charset'          => 'utf8',
 			'tablePrefix'      => 'mipt_',
 		),
@@ -108,7 +99,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=mipt_test',
 			'emulatePrepare'   => true,
 			'username'         => 'mipt_test',
-			'password'         => 'toor',
+			'password'         => 'juOkewOP43uo',
 			'charset'          => 'utf8',
 			'class'            => 'DbConnection',
 		),
@@ -116,7 +107,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=mipt_stable',
 			'emulatePrepare'   => true,
 			'username'         => 'mipt_stable',
-			'password'         => 'toor',
+			'password'         => 'qwerMH782hj',
 			'charset'          => 'utf8',
 			'class'            => 'DbConnection',
 		),

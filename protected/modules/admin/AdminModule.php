@@ -24,8 +24,8 @@ class AdminModule extends CWebModule
 		Yii::app()->user->setStateKeyPrefix('_admin');
 		Yii::app()->setComponents(array(
 			'user' => array(
-				'loginUrl'  => Yii::app()->createUrl('admin/login'),
-				'returnUrl' => Yii::app()->createUrl('admin'),
+				'loginUrl'  => Yii::app()->createUrl('/admin/login'),
+				'returnUrl' => Yii::app()->createUrl('/admin'),
 			)
 		));
 	}

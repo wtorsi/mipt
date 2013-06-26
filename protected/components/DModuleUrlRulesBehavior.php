@@ -18,7 +18,6 @@ class DModuleUrlRulesBehavior extends CBehavior
 	public function beginRequest($event) {
 		$moduleName = $this->_getCurrentModuleName();
 
-
 		if (Yii::app()->hasModule($moduleName)) {
 			$class = ucfirst($moduleName) . 'Module';
 			Yii::import($moduleName . '.' . $class);
